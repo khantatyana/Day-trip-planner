@@ -4,7 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Details</title>
+    <link
+    rel="stylesheet"
+    href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    />
+    <link rel="stylesheet" href="./assets/stylesheet.css" />
+
+
+
+    <!-- maps leaflet links -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
     <style>
+        /* don't remove it from the styling, it's requirements for the maps */
+        #mapid { height: 180px; }
+
+
+
         .grid-container {
         display: grid;
         grid-template-columns: auto auto auto auto;
@@ -22,7 +42,27 @@
     </style>
 </head>
 <body>
-    <header></header>
+    <header>
+      <h1 id="webName">Website Name</h1>
+      <img id="logoImg" src="./assets/project_logo-05.png" alt="logo image" />
+    </header>
+    <!-- nav drop down menu -->
+    <div id="navMenu" class="pure-menu pure-menu-horizontal">
+      <ul class="pure-menu-list">
+        <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+          <a href="#" id="menuLink1" class="pure-menu-link">Nav Placeholder</a>
+
+          <ul class="pure-menu-children">
+            <li class="pure-menu-item">
+              <a href="index.html" class="pure-menu-link">Home</a>
+            </li>
+            <li class="pure-menu-item">
+              <a href="#" class="pure-menu-link">Search</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
     <div class="container">
         <h2>Park Name</h2>
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
@@ -36,7 +76,7 @@
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
         </div>
         <div class="grid-container">
-            <div class="item1" id="mapsBox">
+            <div class="item1" id="mapid">
                 <h1>Maps Box Here</h1>
             </div>
             <div class="item2" id="weatherDashboard">
@@ -44,7 +84,8 @@
             </div>
         </div>
     </div>
-    <footer></footer>
+    <footer>Footer</footer>
     <script src="./script.js"></script>
+    <script src="./leaflet.js"></script>
 </body>
 </html>

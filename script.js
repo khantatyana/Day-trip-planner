@@ -1,0 +1,1 @@
+var queryURL = "https://developer.nps.gov/api/v1/parks?api_key=9bu5bi3vaKYgYQt7Cj4pxdYFN8pkwsL9zSIiRFEd"
