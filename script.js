@@ -8,6 +8,8 @@ $(document).ready(function() {
 
     var stateButton = $("#stateButton");
     var stateList = $("#stateList");
+    var resultsClass = $(".results");
+    var detailsParkName = $("#detailsParkName");
 
     var stateArray = ["Alabama","Alaska","American Samoa","Arizona","Arkansas","California","Colorado","Connecticut","Delaware",
     "Dist. of Columbia","Florida","Georgia","Guam","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine",
@@ -56,7 +58,13 @@ $(document).ready(function() {
         }).then(function(data) {
             console.log(data);
             
-            
+            //FOR DETAILS PAGE
+            //Listen to clicks on 'results' page
+            resultsClass.click(function () {
+//                var detailParkIndex = this(response.data.indexOf);        //WAITING FOR RESULTS PAGE TO BE READY
+                var detailParkIndex = 0;          //FOR TESTING
+                detailParkName = $("<h2>").text(response.data[detailParkIndex].fullName);
+            });    
     
         })
     }
