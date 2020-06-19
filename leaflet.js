@@ -1,4 +1,5 @@
-// leaflet
+// leaflet. This box is for testing purposes
+
 var mymap = L.map('mapid').setView([51.505, -0.09], 13);
 
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoia2hhbnRhdHlhbmEiLCJhIjoiY2tianl6cGtyMHJ2ejJzdGRkamk4amV1byJ9.dvCAei1CaORvJiWXoaEn5g', {
@@ -15,4 +16,5 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 
 // // project1 mapbox API
 // var tokenAPI2 = "pk.eyJ1Ijoia2hhbnRhdHlhbmEiLCJhIjoiY2tianozYmh6MHJ6czJyazA1cDR2bDQ4biJ9.e-uJ4qitZx762hMvRJfL1w";
+
 
