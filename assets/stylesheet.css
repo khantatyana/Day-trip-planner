@@ -1,3 +1,10 @@
+.pure-g > div {
+  box-sizing: border-box;
+}
+.l-box {
+  padding: 1em;
+}
+
 body {
   font-size: 1rem;
 }
@@ -63,7 +70,7 @@ h6 {
 
 #stateCard, #activityCard, #themeCard, #amenityCard { 
 /*#search-cards { */
-  background-color: rgb(2, 51, 2);
+  background-color:  #222b23;
   padding: 0.3em;
   margin: auto 0.3em;
   margin-bottom: 1em;
@@ -85,7 +92,7 @@ h6 {
 }
 
 #submitButton {
-  background-color: rgb(2, 51, 2);
+  background-color: #222b23;
   color: white;
   padding: 0.5em;
   height: 2em;
@@ -132,4 +139,32 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100%;
+}
+
+#detailSidebar {
+  background-color: #afdeb7;
+  height: 30rem;
+  width: 33%;
+  padding: 1em;
+}
+
+#detailMain {
+  height: 30rem;
+  width: 66%;
+  padding: 1em;
+} 
+
+#detailsParkName {
+  text-align: center;
+}
+
+#detailActivitiesArea, #detailTopicsArea, #detailAmenitiesArea {
+  border: 1px solid  #222b23; 
+  width: 33%;
+  float: left;
+}
+
+.detailCardSubheading {
+  background-color: #222b23;
+  color: white;
 }
