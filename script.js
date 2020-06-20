@@ -2,12 +2,11 @@ $(document).ready(function() {
     
     var apiKey = "9bu5bi3vaKYgYQt7Cj4pxdYFN8pkwsL9zSIiRFEd";
 
-    // var stateCode = $("#stateList").val();
+    var queryURL = "";
+    var selectedActivity = "";
 
-    // var queryURL = "https://developer.nps.gov/api/v1/parks?api_key=" + apiKey + "&stateCode=" + stateCode;
 
     var stateButton = $("#stateButton");
-    var stateList = $("#stateList");
     var resultsClass = $(".results");
     var detailsParkName = $("#detailsParkName");
 
@@ -34,24 +33,37 @@ $(document).ready(function() {
 
     ]
 
+    // object of states
+    var statesObject = {};
+    stateArray.forEach((state, stateAbb) => statesObject[state] = stateAbbreviations[stateAbb]);
+    console.log(statesObject);
+
     //FOR STATE DROPDOWN LIST
     for (var i = 0; i < stateArray.length; i++) {
         var option = $("<option>").appendTo(stateList);
-        option.attr("value", stateArray[i]);
-        option.text(stateArray[i]);
+        var state = stateArray[i];
+        var stateAbb = stateAbbreviations[i];
+        option.attr("value", state);
+        option.attr("id", stateAbb);
+        option.text(state);
     } 
 
-
-
-
-
+    // selected State will build new queryURL
+    
+    $( "#stateList" ).change(function() {
+        var stateCode = $("#stateList").children("option:selected").val();
+        alert( "Handler for .select() called." );
+        queryURL = "https://developer.nps.gov/api/v1/parks?api_key=" + apiKey + "&stateCode=" + stateCode;
+        console.log(stateCode);
+        console.log(queryURL);
+      });
 
     // submitButton on click function to call AJAX
 
     function ajaxCall() {
         // this query is for testing purposes only, the final queryURL is line #7
         
-        var queryURL = "https://developer.nps.gov/api/v1/parks?api_key="  + apiKey + "&stateCode=" + "NY";
+        // var queryURL = "https://developer.nps.gov/api/v1/parks?api_key="  + apiKey + "&stateCode=" + "NY";
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -74,7 +86,8 @@ $(document).ready(function() {
         
         // need to work dropdown state Button working before
 
-        // userInput = $("#stateList").val();
+        // stateCode = $("#stateList").val();
+
         ajaxCall();
         
     });
