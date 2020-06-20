@@ -63,7 +63,7 @@
 
 
     
-    <div class="pure-u-1-5" id="activityCard" id="search-cards">
+    <div class="pure-u-1-5" id="activityCard">
         <p>ACTIVITIES</p>
         <div class="pure-menu" id="activityButtonBox">
             <form class="pure-form" id="activityButton">
@@ -93,7 +93,7 @@
         </div>
     </div>
 
-    <div class="pure-u-1-5" id="amenityCard" id="search-cards">
+    <div class="pure-u-1-5" id="amenityCard">
         <p>AMENITIES</p>
         <div class="pure-menu pure-menu-horizontal" id="amenityButtonBox">
             <form class="pure-form" id="amenityButton">
@@ -115,7 +115,10 @@
     <div class="pure-g">
         <div class="pure-u-1" id="searchSubmission">
             <br>
-            <button id="submitButton">SUBMIT</button>
+            <form method="get" action="./results.html">
+                <button type="submit" id="submitButton">SUBMIT</button>
+            </form>
+            
         </div>
     </div>
 </center>
