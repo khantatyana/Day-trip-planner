@@ -26,12 +26,6 @@ header {
   margin: auto;
 }
 
-/* tree logo */
-#logoImgIndex {
-  max-width: 80%;
-  margin: auto;
-}
-
 #logoImg {
   max-width: 80%;
   margin: auto;
@@ -50,7 +44,7 @@ h6 {
 #searchIntro {
   padding: 1em;
   margin: auto 0;
-  text-align: center;   
+  text-align: center;
 }
 
 #searchSummary {
@@ -61,27 +55,33 @@ h6 {
   padding: 1em;
 }
 
-#stateCard, #activityCard, #themeCard, #amenityCard { 
-/*#search-cards { */
+#stateCard,
+#activityCard,
+#themeCard,
+#amenityCard {
+  /*#search-cards { */
   background-color: rgb(2, 51, 2);
   padding: 0.3em;
   margin: auto 0.3em;
   margin-bottom: 1em;
-  height: 5em; 
+  height: 5em;
   color: white;
-  text-align: center;   
+  text-align: center;
 }
 
-#stateButtonBox, #activityButtonBox, #themeButtonBox, #amenityButtonBox { 
+#stateButtonBox,
+#activityButtonBox,
+#themeButtonBox,
+#amenityButtonBox {
   background-color: white;
   margin: auto 0.2em;
-  text-align: center;   
+  text-align: center;
 }
 
 #searchSubmission {
   padding: 0.5em;
   margin: auto 1em;
-  text-align: center;   
+  text-align: center;
 }
 
 #submitButton {
@@ -113,17 +113,6 @@ h6 {
 }
 
 footer {
-  background-color: #435646;
-  height: 2rem;
-  color: white;
-  display: flex;
-  justify-content: center;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-
-#footerIndex {
   background-color: #435646;
   height: 2rem;
   color: white;
