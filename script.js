@@ -39,6 +39,7 @@ $(document).ready(function() {
     console.log(statesObject);
 
     //FOR STATE DROPDOWN LIST
+    var stateList = $( "#stateList" );
     for (var i = 0; i < stateArray.length; i++) {
         var option = $("<option>").appendTo(stateList);
         var state = stateArray[i];
@@ -47,16 +48,6 @@ $(document).ready(function() {
         option.attr("id", stateAbb);
         option.text(state);
     } 
-
-    // selected State will build new queryURL
-    
-    $( "#stateList" ).change(function() {
-        var stateCode = $("#stateList").children("option:selected").val();
-        alert( "Handler for .select() called." );
-        queryURL = "https://developer.nps.gov/api/v1/parks?api_key=" + apiKey + "&stateCode=" + stateCode;
-        console.log(stateCode);
-        console.log(queryURL);
-      });
 
     // submitButton on click function to call AJAX
 
@@ -80,19 +71,6 @@ $(document).ready(function() {
     
         })
     }
-
-    const submitButton = $("#submitButton");
-    submitButton.click( function () {
-        
-        // need to work dropdown state Button working before
-
-        // stateCode = $("#stateList").val();
-
-        ajaxCall();
-        
-    });
-
-
 
 
 });
