@@ -10,6 +10,13 @@
     />
     <link rel="stylesheet" href="./assets/stylesheet.css" />
 
+    <!-- in script tage below defer means - ask the browser to parse the html first -->
+    <!-- in script tage below async means - ask the browser to render the rest of the website while maps JS API loads.
+    when API is ready it will call the function initMap using the callback parameter. -->
+
+    <!-- <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiV7_7LrySbARCtQhOWnXADIXGRWeSIVs&callback=initMap">
+    </script> -->
 
 
     <!-- maps leaflet links -->
@@ -19,15 +26,26 @@
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
     integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
     crossorigin=""></script>
+
     <style>
         /* don't remove it from the styling, it's requirements for the maps */
-        #mapid { height: 180px; }
+        #mapid { 
+          height: 100%; 
+          /* width: calc(100% - 300px - 0.25em); */
+    float: left;
+        }
 
 
 
         .grid-container {
         display: grid;
-        grid-template-columns: auto auto auto auto;
+        /* Daria - I'm controling the sizing of the map div by setting 600px for 
+        the width of the column block 1 */
+        grid-template-columns: 600px auto;
+
+        /* Daria - I'm controling height of the map div by setting 600px for 
+        the height of the row block */
+        grid-template-rows: 400px;
         grid-gap: 10px;
         background-color: #2196F3;
         padding: 10px;
@@ -42,7 +60,6 @@
     </style>
 </head>
 <body>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <header>
       <h1 id="webName">Website Name</h1>
       <img id="logoImg" src="./assets/project_logo-05.png" alt="logo image" />
@@ -58,14 +75,14 @@
               <a href="index.html" class="pure-menu-link">Home</a>
             </li>
             <li class="pure-menu-item">
-              <a href="search.html" class="pure-menu-link">Search</a>
+              <a href="#" class="pure-menu-link">Search</a>
             </li>
           </ul>
         </li>
       </ul>
     </div>
     <div class="container">
-        <h2 id="detailsParkName">Park Name</h2>
+        <h2>Park Name</h2>
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
             Why do we use it?
@@ -77,8 +94,10 @@
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
         </div>
         <div class="grid-container">
+
+          <!-- Daria - google map territory -->
             <div class="item1" id="mapid">
-                <h1>Maps Box Here</h1>
+                <!-- <h1>Maps Box Here</h1> -->
             </div>
             <div class="item2" id="weatherDashboard">
                 <h1>Weather Dashboard Here</h1>
@@ -86,7 +105,10 @@
         </div>
     </div>
     <footer>Footer</footer>
-    <script src="./script.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+    <!-- <script src="./script.js"></script> -->
     <script src="./leaflet.js"></script>
 </body>
 </html>

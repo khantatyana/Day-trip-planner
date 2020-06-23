@@ -21,7 +21,7 @@ var stateName = "pa";
 var activitiesName = "Biking";
 var themeTopic = "Abolition Movement";
 
-fetchResults(stateName, activitiesName);
+fetchResults(stateName);
 
 //this function is going to fetch all the places that match the search
 function fetchResults(stateName,activitiesName, themeTopic ) {
@@ -33,79 +33,48 @@ function fetchResults(stateName,activitiesName, themeTopic ) {
     }).then(function(response){
         console.log(response);
     
-        alert(activitiesName);
+        alert(response.data.length);
 
-        var parksByState = response.data.length;
-        
-        //var parksWithActivities = [{}];
+        for (var i = 0; i < response.data.length; i++) {
 
-        for (var i = 0; i < parksByState; i++) {
             var display = true;
 
             // if the activity name is not empty
             if (activitiesName != "") {
 
-                var activitiesObject = response.data[i].activities;
+                if (!(response.data[i].activities)) {
 
-              for (var j = 0; j < activitiesObject.length; j++ ){
+                display = false;                
 
-                var eachActivityObject = response.data[i].activities[j];
-
-                if((eachActivityObject.name).includes(activitiesName)){
-
-                    var parkName = response.data[i].fullName;
-                    var activities = [];
-
-                    activities.push(activitiesName);
-                    alert(activities);
-
-
-                    displayParkOptions(parkName, JSON.stringify(activities));
-                     
-
-                        
-                    // var newVal = [
-                    // {
-                    // parkName : (response.data[i].fullName),
-                    // activityName : (eachActivityObject.name)
-                    // }
-                    // ];
-
-                    // parksWithActivities = parksWithActivities.concat(newVal);
-
-                } 
+               }
                 
-              }
 
-              //alert(JSON.stringify(parksWithActivities));
             }
+
+            if (themeTopic != "") {
+
+                if (!(response.data[i].topics.includes(activitiesName)) {
+
+                display = false;                
+
+               }
                 
 
-            // }
+            }
 
-            // if (themeTopic != "") {
-
-            //     if (!(response.data[i].topics.includes(activitiesName)) {
-
-            //     display == false;                
-
-            //    }
-                
-
-            // }            
+             
         
 
- 
-       }
-        // }
+        var parkName = response.data[i].fullName;
+        var activities = 
 
-        function displayParkOptions(parkName, activities){
-
-            var resultsDiv = $("<div>").addClass("pure-u-3-5 results").appendTo("#parentResultsDiv");
-            $("<h4>").text(parkName).appendTo(resultsDiv);
-            $("<p>").text(activities);
-            }
-
+        //parkName.push()
+        if (display) {
+        var resultsDiv = $("<div>").addClass("pure-u-3-5 results").appendTo("#parentResultsDiv");
+        $("<h4>").text(parkName).appendTo(resultsDiv);
+        $("<p>").text();
+        }
+        }
 
 
     });
