@@ -10,10 +10,6 @@
       rel="stylesheet"
       href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
     />
-    <!-- <link
-      href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap"
-      rel="stylesheet"
-    /> -->
     <link rel="stylesheet" href="./assets/stylesheet.css" />
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   </head>
@@ -50,7 +46,6 @@
           <div id="stateButtonBox">
             <form id="stateButton">
               <select id="stateList">
-                <!-- name="drinks" required-->
                 <option value="" disabled selected hidden
                   >Choose a state</option
                 >
@@ -63,9 +58,10 @@
           <h2>Activities</h2>
           <div id="activityButtonBox">
             <form id="activityButton">
-              <select id="activityList">
+                <select name="activities" id="activitiesListBtn"></select>
                 <option value="" disabled selected hidden>Optional</option>
               </select>
+              
             </form>
           </div>
         </div>
@@ -73,11 +69,13 @@
         <div class="search-cards" id="themeCard">
           <h2>Theme</h2>
           <div id="themeButtonBox">
-            <form id="themeButton">
-              <select id="themeList">
+            <form id="themeList">
+                <select name="themes" id="themeListBtn"></select>
                 <option value="" disabled selected hidden>Optional</option>
               </select>
             </form>
+
+            
           </div>
         </div>
       </div>
@@ -91,7 +89,7 @@
       <p>&copy 2020 Explore Outdoors</p>
     </footer>
 
-    <script src="./script.js"></script>
+    <script src="./search.js"></script>
   </body>
 </html>
 
