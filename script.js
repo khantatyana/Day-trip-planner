@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
     //ALL JAVASCRIPT THAT IS USED IN SEARCH PAGE AND RESULTS PAGE WAS REMOVED
 
@@ -15,13 +15,14 @@ $(document).ready(function () {
 
     //CONFIRMS THAT detailMain is accessible inside a function
     var testingButton = $("<button>").text("Testing").appendTo(detailMain);
-    testingButton.click(function () {
+    testingButton.click(function() {
         detailMain.empty();
         detailSidebar.empty();
 
         var apiKey = "9bu5bi3vaKYgYQt7Cj4pxdYFN8pkwsL9zSIiRFEd";
 
-        var queryURL = "https://developer.nps.gov/api/v1/parks?api_key=" + apiKey + "&stateCode=" + "NY";
+        var queryURL = "https://developer.nps.gov/api/v1/parks?api_key="  + apiKey + "&stateCode=" + "NY";
+
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -48,6 +49,7 @@ $(document).ready(function () {
             var detailsAddress1 = $("<p>").text(data.data[0].addresses[0].line2).appendTo(detailSidebar);
             var detailsAddress2 = $("<p>").text(data.data[0].addresses[0].line3).appendTo(detailSidebar);
             var detailsCityStateZip = $("<p>").appendTo(detailSidebar)
+
                 .text(data.data[0].addresses[0].city + ", " +
                     data.data[0].addresses[0].stateCode +
                     data.data[0].addresses[0].postalCode);
@@ -76,6 +78,7 @@ $(document).ready(function () {
             var detailsWednesday = $("<p>").text("Wednesday: " + data.data[0].operatingHours[0].standardHours.wednesday).appendTo(detailSidebar);
             var detailsThursday = $("<p>").text("Thursday: " + data.data[0].operatingHours[0].standardHours.thursday).appendTo(detailSidebar);
             var detailsFriday = $("<p>").text("Friday: " + data.data[0].operatingHours[0].standardHours.friday).appendTo(detailSidebar);
+
             var detailsSaturday = $("<p>").text("Saturday: " + data.data[0].operatingHours[0].standardHours.saturday).appendTo(detailSidebar);
 
             for (var m = 1; m < (data.data[0].images).length; m++) {
