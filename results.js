@@ -169,9 +169,11 @@ $(document).ready(function() {
                         }
                     }
                 }
-             }   
-            
-        })
+
+                
+            }
+        }) //debug
+
 
     }
 
