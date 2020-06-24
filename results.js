@@ -7,8 +7,6 @@ $(document).ready(function() {
     console.log(stateActivities);
     var stateTheme = urlParams.get("theme");              // getting the activities from the URL
     console.log(stateTheme);                               // getting theme from the URL
-    // var stateAmenities = urlParams.get("amenity");              // getting the activities from the URL
-    // console.log(stateAmenities); 
 
     var stateArray = ["Alabama","Alaska","American Samoa","Arizona","Arkansas","California","Colorado","Connecticut","Delaware",
         "Dist. of Columbia","Florida","Georgia","Guam","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine",
@@ -41,8 +39,10 @@ $(document).ready(function() {
         }).then(function(data) {
             console.log(data);
             console.log(data.data.length);
+            var totalParks = $("<h3>").prependTo("#resultsIntro");
+            totalParks.text("We found " + data.data.length + " National Parks in " + stateName + " State").appendTo(totalParks);
             for (var i = 0; i < data.data.length; i++) {
-
+                
                 var parkName = data.data[i].fullName;
                 var resultsDiv = $("<div>").addClass("pure-u-3-5 results").appendTo("#parentResultsDiv");
                 $("<h4>").text(parkName).appendTo(resultsDiv);
@@ -66,6 +66,9 @@ $(document).ready(function() {
             method: "GET"
         }).then(function(data) {
             console.log(data);
+            var totalParks = $("<h3>").prependTo("#resultsIntro");
+            totalParks.text("We found " + data.data.length + " National Parks in " + stateName + " State").appendTo(totalParks);
+            $("<h3>").text("You've chosen " + userInputActivities + " Activity. Try another Activity and explore more.").prependTo($("#resultsResume"));
             for (var i = 0; i < data.data.length; i++) {
                 var activitiesObj = data.data[i].activities;
                 for (var j = 0; j < activitiesObj.length; j ++) {
@@ -78,7 +81,7 @@ $(document).ready(function() {
                         }
                         var entranceFee = $("<p>");
                         entranceFee.text(data.data[i].entranceFees[0].title + ": $" + parseFloat(data.data[i].entranceFees[0].cost).toFixed(2)).appendTo(resultsDiv);
-                    }
+                    } 
                 }
                 
             }
@@ -91,6 +94,9 @@ $(document).ready(function() {
             method: "GET"
         }).then(function(data) {
             console.log(data);
+            var totalParks = $("<h3>").prependTo("#resultsIntro");
+            totalParks.text("We found " + data.data.length + " National Parks in " + stateName + " State").appendTo(totalParks);
+            $("<h3>").text("You've chosen " + userInputTheme + " Theme. Try another Theme and explore more.").prependTo($("#resultsResume"));
             for (var i = 0; i < data.data.length; i++) {
                 var topicsObj = data.data[i].topics;
                 for (var j = 0; j < topicsObj.length; j ++) {
@@ -109,25 +115,6 @@ $(document).ready(function() {
             }
         })
     }
-    // function allParksInState () {
-
-    //     for (var i = 0; i < data.data.length; i++) {
-
-    //         var parkName = data.data[i].fullName;
-    //         var resultsDiv = $("<div>").addClass("pure-u-3-5 results").appendTo("#parentResultsDiv");
-    //         $("<h4>").text(parkName).appendTo(resultsDiv);
-    //         var activitiesObj = data.data[i].activities;
-            
-    //         for (var j = 0; j < activitiesObj.length; j ++) {
-    //             $("<p>").text(activitiesObj[j].name).appendTo(resultsDiv);
-    //         }
-            
-    //         var entranceFee = $("<p>");
-    //         entranceFee.text(data.data[i].entranceFees[0].title + ": $" + parseFloat(data.data[i].entranceFees[0].cost).toFixed(2)).appendTo(resultsDiv);
-
-    //     }
-  
-    // }
     function ajaxStateActivityThemeCall(userInputState, userInputActivities, userInputTheme) {  // if user picks only state option it'll be running only this AJAX api
         $.ajax({
                 
@@ -135,13 +122,29 @@ $(document).ready(function() {
             method: "GET"
         }).then(function(data) {
             console.log(data);
-            for (var i = 0; i < data.data.length; i++) {
-                var topicsObj = data.data[i].topics;
+            var totalParks = $("<h3>").prependTo("#resultsIntro");
+            totalParks.text("We found " + data.data.length + " National Parks in " + stateName + " State").appendTo(totalParks);
+            $("<h3>").text("You've chosen " + userInputActivities + " Activity and " + userInputTheme + " Theme. Try another Activity or Theme and explore more.").prependTo($("#resultsResume"));
+
+            var topicsObj = data.data.map(arrTopics => arrTopics.topics);
+            console.log(topicsObj);
+            var activitiesObj = data.data.map(arrActivities => arrActivities.activities);
+            console.log(activitiesObj);
+            // var parkName = data.data[i].fullName;
+
+    
+                
+                for (var j = 0; j < activitiesObj.length; j ++) {
+                    if (activitiesObj[j].name == userInputActivities) {
+                    }
+
+                }
+                
+
                 for (var j = 0; j < topicsObj.length; j ++) {
                     if (topicsObj[j].name == userInputTheme) {
-                        var activitiesObj = data.data[i].activities;
-                        if (activitiesObj[j].name == userInputActivities) {
-                            var parkName = data.data[i].fullName;
+                        
+                            
                             var resultsDiv = $("<div>").addClass("pure-u-3-5 results").appendTo("#parentResultsDiv");
                             $("<h4>").text(parkName).appendTo(resultsDiv);
                             for (var j = 0; j < activitiesObj.length; j ++) {
@@ -166,9 +169,11 @@ $(document).ready(function() {
                         }
                     }
                 }
+
                 
             }
         }) //debug
+
 
     }
 
