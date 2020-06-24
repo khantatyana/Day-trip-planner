@@ -4,69 +4,57 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Results</title>
+    <link rel="stylesheet" href="./assets/reset.css" />
     <link
       rel="stylesheet"
       href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
     />
     <link rel="stylesheet" href="./assets/stylesheet.css" />
-  </head>
-  <body>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <header>
-      <h1 id="webName">Website Name</h1>
-      <img id="logoImg" src="./assets/project_logo-05.png" alt="logo image" />
-    </header>
-    <!-- nav drop down menu -->
-    <div id="navMenu" class="pure-menu pure-menu-horizontal">
-      <ul class="pure-menu-list">
-        <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-          <a href="#" id="menuLink1" class="pure-menu-link">Nav Placeholder</a>
+  </head>
 
-          <ul class="pure-menu-children">
-            <li class="pure-menu-item">
-              <a href="index.html" class="pure-menu-link">Home</a>
-            </li>
-            <li class="pure-menu-item">
-              <a href="search.html" class="pure-menu-link">Search</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
+  <body>
+    <div class="bodyContainer">
+      <!-- header -->
+      <header>
+        <h1>Explore Outdoors</h1>
+        <img src="./assets/project_logo-05.png" alt="logo image" />
+      </header>
 
-    <div class="container resultsPage">
-      <div class="pure-u-3-5">
-        <h2>Header Placeholder</h2>
-        <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release
-        </p>
+      <!-- nav drop down menu -->
+
+      <div class="dropdown" id="navMenu">
+        <button class="dropbtn">Menu</button>
+        <div class="dropdown-content">
+          <a href="index.html">Home</a>
+          <a href="search.html">Search</a>
+        </div>
       </div>
 
-      <div id ="parentResultsDiv">
-        <!-- <div class="pure-u-3-5 results" id="resultsDiv"> -->
-          <!-- <h1>Result 1</h1>
+
+      <!-- body content -->
+      <div class="resultsPage">
+        <div id="resultsIntro">
+          <h2>Header Placeholder</h2>
+
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos et
-            molestias soluta, necessitatibus quo quis nemo tenetur officiis,
-            culpa consequatur aut voluptatum quaerat blanditiis sint velit autem
-            sed illum. Doloribus!
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry.
           </p>
-          <a href="details.html">learn more here</a>
-        </div> -->
+
+        </div>
+        <!-- results card -->
+
+    <div id="parentResultsDiv">
+
       </div>
 
 
     <footer>
-      <p>&copy 2020, Name Placeholder</p>
+      <p>&copy 2020 Explore Outdoors</p>
     </footer>
 
-    <!-- <script src="./script.js"></script> -->
-    <script src="./leaflet.js"></script>
+    <script src="./results.js"></script>
+
   </body>
 </html>
