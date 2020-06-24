@@ -166,12 +166,14 @@ $(document).ready(function() {
     //                         // var entranceFee = $("<p>");
     //                         // entranceFee.text(data.data[i].entranceFees[0].title + ": $" + parseFloat(data.data[i].entranceFees[0].cost).toFixed(2)).appendTo(resultsDiv);
     
+
     //                     }
     //                 }
     //             }
     //         }   
             
     //     })
+
 
     // }
 
