@@ -164,6 +164,7 @@ select:hover {
 }
 
 #resultsIntro {
+  font-size: 45px;
   margin: 2rem 0 1rem 0;
   max-width: 90%;
 }

@@ -1,5 +1,14 @@
 $(document).ready(function() {
 
+    var stateArray = ["", "Alabama","Alaska","American Samoa","Arizona","Arkansas","California","Colorado","Connecticut","Delaware",
+        "Dist. of Columbia","Florida","Georgia","Guam","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine",
+        "Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey",
+        "New Mexico","New York","North Carolina","North Dakota","Northern Mariana Islands","Ohio","Oklahoma","Oregon","Pennsylvania","Puerto Rico",
+        "Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Virgin Islands","Washington",
+        "West Virginia","Wisconsin","Wyoming"];
+    var stateAbbreviations = ["AL","AK","AS","AZ","AR","CA","CO","CT","DE","DC","FL","GA","GU","HI","ID","IL","IN","IA","KS","KY","LA",
+        "ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","MP","OH","OK","OR","PA","PR","RI","SC","SD","TN",
+        "TX","UT","VT","VA","VI","WA","WV","WI","WY"];
 
     var activities = [
         "",
@@ -133,23 +142,12 @@ $(document).ready(function() {
         "Women's History"
     ]
     
-    var stateArray = ["", "Alabama","Alaska","American Samoa","Arizona","Arkansas","California","Colorado","Connecticut","Delaware",
-        "Dist. of Columbia","Florida","Georgia","Guam","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine",
-        "Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey",
-        "New Mexico","New York","North Carolina","North Dakota","Northern Mariana Islands","Ohio","Oklahoma","Oregon","Pennsylvania","Puerto Rico",
-        "Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Virgin Islands","Washington",
-        "West Virginia","Wisconsin","Wyoming"];
-
-    var stateAbbreviations = ["AL","AK","AS","AZ","AR","CA","CO","CT","DE","DC","FL","GA","GU","HI","ID","IL","IN","IA","KS","KY","LA",
-        "ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","MP","OH","OK","OR","PA","PR","RI","SC","SD","TN",
-        "TX","UT","VT","VA","VI","WA","WV","WI","WY"];
-
     // object of states
     var statesObject = {};
     stateArray.forEach((state, stateAbb) => statesObject[state] = stateAbbreviations[stateAbb]);
     console.log(statesObject);
 
-    //FOR STATE DROPDOWN LIST
+    // FOR STATE DROPDOWN LIST
     for (var i = 0; i < stateArray.length; i++) {
         var option = $("<option>").appendTo(stateList);
         var state = stateArray[i];
@@ -159,16 +157,17 @@ $(document).ready(function() {
         option.text(state);
     } 
     console.log(activities.length);
-
+    
+    // FOR ACTIVITIES DROPDOWN LIST
     for (var i = 0; i < activities.length; i ++) {
         var option = $("<option>").appendTo($("#activitiesListBtn"));
         option.attr("value", activities[i]);
         // option.attr("id", activities.id);
         option.text(activities[i]);
     }
-
     console.log(themes.length);
 
+    // FOR THEMES DROPDOWN LIST
     for (var i = 0; i < themes.length; i ++) {
         var option = $("<option>").appendTo($("#themeListBtn"));
         option.attr("value", themes[i]);
@@ -176,45 +175,25 @@ $(document).ready(function() {
         option.text(themes[i]);
     }
 
-    // console.log(amenities.length);
-
-    // for (var i = 0; i < amenities.length; i ++) {
-    //     var option = $("<option>").appendTo($("#amenityListBtn"));
-    //     option.attr("value", amenities[i]);
-    //     // option.attr("id", amenities.id);
-    //     option.text(amenities[i]);
-    // }
-
-    // connect all input btns together
-
+    // connect all input buttons together to the object
     var selectedOptions = {
         state: null,
         activity: null,
         theme: null,
-        // amenity: null
     }
 
     $( "#stateList" ).change(function() {
         selectedOptions.state = $(this).val();
-
-        // alert($(this).val());
         console.log(selectedOptions);
     });
     $("#activitiesListBtn").change(function() {
         selectedOptions.activity = $(this).val();
-        // alert($(this).val());
         console.log(selectedOptions);
     })
     $("#themeListBtn").change(function() {
         selectedOptions.theme = $(this).val();
-        // alert($(this).val());
         console.log(selectedOptions);
     })
-    // $("#amenityListBtn").change(function() {
-    //     selectedOptions.amenity = $(this).val();
-    //     alert($(this).val());
-    // })
-    
 
     const submitButton = $("#submitButton");
     submitButton.click( function (event) {
@@ -224,12 +203,7 @@ $(document).ready(function() {
             "?stateName=" + selectedOptions.state +         // saving object into the window location href of user's stateName choice
             "&activity=" + selectedOptions.activity +       // saving object into the window location href of user's activity choice
             "&theme=" + selectedOptions.theme            // saving object into the window location href of user's theme choice
-            // "&amenity=" + selectedOptions.amenity
         console.log(window.location);
-        // console.log("HI");
-            // alert(window.location);
-        
-
     });
 
 })
