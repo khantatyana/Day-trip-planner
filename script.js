@@ -1,5 +1,18 @@
 $(document).ready(function() {
 
+    var urlParams = new URLSearchParams(window.location.search);     //constructing URl with saved parameters from the window location href
+    var longitude = urlParams.get("longitude");                     // getting stateName from the URL 
+    console.log(longitude);
+    var latitude = urlParams.get("latitude");              // getting the activities from the URL
+    console.log(latitude);
+    var parkCode = urlParams.get("parkCode");              // getting the activities from the URL
+    console.log(parkCode);        
+
+
+
+
+
+
     //ALL JAVASCRIPT THAT IS USED IN SEARCH PAGE AND RESULTS PAGE WAS REMOVED
 
     var apiKey = "9bu5bi3vaKYgYQt7Cj4pxdYFN8pkwsL9zSIiRFEd";
