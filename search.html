@@ -40,52 +40,57 @@
         </p>
       </div>
 
-      <div id="searchContainer">
+      <form>
+        <div id="searchContainer">
         <div class="search-cards" id="stateCard">
-          <h2>*State
-          </h2>
+          <h2>State</h2>
           <div id="stateButtonBox">
-            <form id="stateButton">
-              <select id="stateList">
-                <option value="" disabled selected hidden
-                  >Choose a state</option
-                >
-              </select>
-            </form>
+            <!--      <form id="stateButton">    -->
+            <select id="stateList">
+              <option value="" disabled selected hidden>Choose a state</option>
+            </select>
+            <!--      </form>   -->
           </div>
         </div>
+
 
         <div class="search-cards" id="activityCard">
           <h2>Activities</h2>
           <div id="activityButtonBox">
-            <form id="activityButton">
-                <select name="activities" id="activitiesListBtn"></select>
-                <option value="" disabled selected hidden>Optional</option>
+            <div id="activityButton">
+              <!--      <form id="activityButton">    -->
+              <select name="activities" id="activitiesListBtn"></select>
+              <option value="" disabled selected hidden>Optional</option>
               </select>
-              
-            </form>
+
+              <!--      </form>     -->
+            </div>
           </div>
         </div>
 
         <div class="search-cards" id="themeCard">
           <h2>Theme</h2>
           <div id="themeButtonBox">
-            <form id="themeList">
-                <select name="themes" id="themeListBtn"></select>
-                <option value="" disabled selected hidden>Optional</option>
+            <div id="themeList">
+              <!--      <form id="themeList">   -->
+              <select name="themes" id="themeListBtn"></select>
+              <option value="" disabled selected hidden>Optional</option>
               </select>
-            </form>
+              <!--      </form>      -->
 
-            
+
+            </div>
           </div>
         </div>
-      </div>
-
-      <div id="searchSubmission">
-        <button type="submit" id="submitButton">Submit</button>
-      </div>
     </div>
 
+    <div id="searchSubmission">
+      <button id="submitButton">Submit</button>
+    </div>
+  </div>
+
+  </form>
+  <!--TO ENCLOSE ALL 4 USER INPUTS IN 1 FORM-->
     <footer>
       <p>&copy 2020 Explore Outdoors</p>
     </footer>
