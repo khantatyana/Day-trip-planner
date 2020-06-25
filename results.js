@@ -194,7 +194,9 @@ $(document).ready(function() {
                     divOfPtags.appendTo(resultsDiv);
 
                     var entranceFee = $("<p>");
-                    entranceFee.text(x.entranceFees[0].title + ": $" + parseFloat(x.entranceFees[0].cost).toFixed(2)).appendTo(resultsDiv);
+                        if (data.data[i].entranceFees[0]) {
+                            entranceFee.text(data.data[i].entranceFees[0].title + ": $" + parseFloat(data.data[i].entranceFees[0].cost).toFixed(2)).appendTo(resultsDiv);
+                        }    
 
                 } else {
                     $("<div>").text("Your search criteria did not match any Park in " + userInputState).appendTo("#parentResultsDiv");
