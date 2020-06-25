@@ -66,7 +66,7 @@ $(document).ready(function() {
                 }
                 
             }
-        })
+            divOfPtags.appendTo(resultsDiv);
 
     }
     function ajaxStateActivityCall(userInputState, userInputActivities) {          // if user picks state and activity, it'll be filtering in the given state by matching activity
@@ -221,17 +221,38 @@ $(document).ready(function() {
         if (stateActivities != "null" && stateTheme != "null") {
             console.log("all things were selected");
             ajaxStateActivityThemeCall(stateCode, stateActivities, stateTheme);
+
         }
-        if (stateActivities == "null" && stateTheme != "null") {
-            console.log("state " + stateCode + " and theme " + stateTheme);
-            ajaxStateThemesCall(stateCode, stateTheme);
+      }
+      console.log(filteringActivities);
+      console.log(parkByActivities);
+      for (var x of topicsObj) {
+        for (var y of x) {
+          if (y.name == userInputTheme) {
+            filteringTheme = true;
+            parkByTheme.push(data.data[topicsObj.indexOf(x)]);
+          }
         }
+      }
+      console.log(filteringTheme);
+      console.log(parkByTheme);
 
-    }
+      for (var x of parkByActivities) {
+        var parkName = x.fullName;
 
+        if (parkByTheme.includes(x)) {
+          console.log("yes");
 
-
-// $("#parentResultsDiv").click(function(event){
+          var resultsDiv = $("<div>")
+            .addClass("results")
+            .appendTo("#parentResultsDiv")
+            .attr({
+              "data-lon": x.longitude,
+              "data-lat": x.latitude,
+              "data-park": x.parkCode,
+            });
+          $("<h4>").text(parkName).appendTo(resultsDiv);
+          var divOfPtags = $("<div>").addClass("container");
     
 $("#parentResultsDiv").click(function(event){
     //event.currentTarget.
@@ -246,20 +267,18 @@ $("#parentResultsDiv").click(function(event){
         var longitude = event.target.parentNode.getAttribute("data-lon");
         var latitude = event.target.parentNode.getAttribute("data-lat");
         var parkCode = event.target.parentNode.getAttribute("data-park");
-        
-
     }
 
     if (parkCode != null) {
-
-    window.location.href = "./details.html" +             // saving object into the window location href with parameters of user's choices
-    "?longitude=" + longitude +         // saving object into the window location href of user's stateName choice
-    "&latitude=" + latitude +       // saving object into the window location href of user's activity choice
-    "&parkCode=" + parkCode            // saving object into the window location href of user's theme choice
-console.log(window.location);
+      window.location.href =
+        "./details.html" + // saving object into the window location href with parameters of user's choices
+        "?longitude=" +
+        longitude + // saving object into the window location href of user's stateName choice
+        "&latitude=" +
+        latitude + // saving object into the window location href of user's activity choice
+        "&parkCode=" +
+        parkCode; // saving object into the window location href of user's theme choice
+      console.log(window.location);
     }
-
-
-    })
-
-})
+  });
+});
