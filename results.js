@@ -139,8 +139,6 @@ $(document).ready(function () {
   console.log(stateCode);
 
   function ajaxStatesCall(userInput) {
-    // if user picks only state option it'll be running only this AJAX api
-
     $.ajax({
       url:
         "https://developer.nps.gov/api/v1/parks?stateCode=" +
@@ -156,6 +154,7 @@ $(document).ready(function () {
           "We found " + data.data.length + " National Parks in " + stateName
         )
         .appendTo(totalParks);
+
       for (var i = 0; i < data.data.length; i++) {
         var parkName = data.data[i].fullName;
         var resultsDiv = $("<div>")
@@ -168,19 +167,25 @@ $(document).ready(function () {
           });
         $("<h4>").text(parkName).appendTo(resultsDiv);
         var activitiesObj = data.data[i].activities;
+
         var divOfPtags = $("<div>").addClass("container");
+
         for (var j = 0; j < activitiesObj.length; j++) {
           $("<p>").text(activitiesObj[j].name).appendTo(divOfPtags);
         }
+
         divOfPtags.appendTo(resultsDiv);
+
         var entranceFee = $("<p>");
-        entranceFee
-          .text(
-            data.data[i].entranceFees[0].title +
-              ": $" +
-              parseFloat(data.data[i].entranceFees[0].cost).toFixed(2)
-          )
-          .appendTo(resultsDiv);
+        if (data.data[i].entranceFees[0]) {
+          entranceFee
+            .text(
+              data.data[i].entranceFees[0].title +
+                ": $" +
+                parseFloat(data.data[i].entranceFees[0].cost).toFixed(2)
+            )
+            .appendTo(resultsDiv);
+        }
       }
     });
   }
@@ -202,9 +207,9 @@ $(document).ready(function () {
         .appendTo(totalParks);
       $("<h3>")
         .text(
-          "You picked " +
+          "You've chosen " +
             userInputActivities +
-            ". Try another activity and explore more."
+            " Activity. Try another Activity and explore more."
         )
         .prependTo($("#resultsResume"));
       for (var i = 0; i < data.data.length; i++) {
@@ -222,24 +227,27 @@ $(document).ready(function () {
               });
             $("<h4>").text(parkName).appendTo(resultsDiv);
             var divOfPtags = $("<div>").addClass("container");
+
             for (var j = 0; j < activitiesObj.length; j++) {
               $("<p>").text(activitiesObj[j].name).appendTo(divOfPtags);
             }
             divOfPtags.appendTo(resultsDiv);
+
             var entranceFee = $("<p>");
-            entranceFee
-              .text(
-                data.data[i].entranceFees[0].title +
-                  ": $" +
-                  parseFloat(data.data[i].entranceFees[0].cost).toFixed(2)
-              )
-              .appendTo(resultsDiv);
+            if (data.data[i].entranceFees[0]) {
+              entranceFee
+                .text(
+                  data.data[i].entranceFees[0].title +
+                    ": $" +
+                    parseFloat(data.data[i].entranceFees[0].cost).toFixed(2)
+                )
+                .appendTo(resultsDiv);
+            }
           }
         }
       }
     });
   }
-
   function ajaxStateThemesCall(userInputState, userInputTheme) {
     // if user picks state and theme, it'' be filtering in the given state by matching theme
     $.ajax({
@@ -258,9 +266,9 @@ $(document).ready(function () {
         .appendTo(totalParks);
       $("<h3>")
         .text(
-          "You picked " +
+          "You've chosen " +
             userInputTheme +
-            ". Try another theme and explore more."
+            " Theme. Try another Theme and explore more."
         )
         .prependTo($("#resultsResume"));
       for (var i = 0; i < data.data.length; i++) {
@@ -278,79 +286,136 @@ $(document).ready(function () {
               });
             $("<h4>").text(parkName).appendTo(resultsDiv);
             var divOfPtags = $("<div>").addClass("container");
+
             for (var j = 0; j < topicsObj.length; j++) {
               $("<p>").text(topicsObj[j].name).appendTo(divOfPtags);
             }
             divOfPtags.appendTo(resultsDiv);
+
             var entranceFee = $("<p>");
-            entranceFee
-              .text(
-                data.data[i].entranceFees[0].title +
-                  ": $" +
-                  parseFloat(data.data[i].entranceFees[0].cost).toFixed(2)
-              )
-              .appendTo(resultsDiv);
+            if (data.data[i].entranceFees[0]) {
+              entranceFee
+                .text(
+                  data.data[i].entranceFees[0].title +
+                    ": $" +
+                    parseFloat(data.data[i].entranceFees[0].cost).toFixed(2)
+                )
+                .appendTo(resultsDiv);
+            }
           }
         }
       }
     });
   }
+  function ajaxStateActivityThemeCall(
+    userInputState,
+    userInputActivities,
+    userInputTheme
+  ) {
+    // if user picks only state option it'll be running only this AJAX api
+    $.ajax({
+      url:
+        "https://developer.nps.gov/api/v1/parks?stateCode=" +
+        userInputState +
+        "&api_key=9bu5bi3vaKYgYQt7Cj4pxdYFN8pkwsL9zSIiRFEd",
+      method: "GET",
+    }).then(function (data) {
+      console.log(data);
+      var totalParks = $("<h3>").prependTo("#resultsIntro");
+      totalParks
+        .text(
+          "We found " + data.data.length + " National Parks in " + stateName
+        )
+        .appendTo(totalParks);
+      $("<h3>")
+        .text(
+          "You've chosen " +
+            userInputActivities +
+            " Activity and " +
+            userInputTheme +
+            " Theme. Try another Activity or Theme and explore more."
+        )
+        .prependTo($("#resultsResume"));
 
-  // function ajaxStateActivityThemeCall(userInputState, userInputActivities, userInputTheme) {  // if user picks only state option it'll be running only this AJAX api
-  //     $.ajax({
+      var activitiesObj = data.data.map(
+        (arrActivities) => arrActivities.activities
+      );
+      console.log(activitiesObj);
+      var topicsObj = data.data.map((arrTopics) => arrTopics.topics);
+      console.log(topicsObj);
+      var parkByActivities = [];
+      var parkByTheme = [];
 
-  //         url: "https://developer.nps.gov/api/v1/parks?stateCode="+ userInputState +"&api_key=9bu5bi3vaKYgYQt7Cj4pxdYFN8pkwsL9zSIiRFEd",
-  //         method: "GET"
-  //     }).then(function(data) {
-  //         console.log(data);
-  //         var totalParks = $("<h3>").prependTo("#resultsIntro");
-  //         totalParks.text("We found " + data.data.length + " National Parks in " + stateName).appendTo(totalParks);
-  //         $("<h3>").text("You've chosen " + userInputActivities + " Activity and " + userInputTheme + " Theme. Try another Activity or Theme and explore more.").prependTo($("#resultsResume"));
+      var filteringActivities = false;
+      var filteringTheme = false;
+      for (var x of activitiesObj) {
+        for (var y of x) {
+          if (y.name == userInputActivities) {
+            filteringActivities = true;
+            parkByActivities.push(data.data[activitiesObj.indexOf(x)]);
+          }
+        }
+      }
+      console.log(filteringActivities);
+      console.log(parkByActivities);
+      for (var x of topicsObj) {
+        for (var y of x) {
+          if (y.name == userInputTheme) {
+            filteringTheme = true;
+            parkByTheme.push(data.data[topicsObj.indexOf(x)]);
+          }
+        }
+      }
+      console.log(filteringTheme);
+      console.log(parkByTheme);
 
-  //         var topicsObj = data.data.map(arrTopics => arrTopics.topics);
-  //         console.log(topicsObj);
-  //         var activitiesObj = data.data.map(arrActivities => arrActivities.activities);
-  //         console.log(activitiesObj);
-  //         // var parkName = data.data[i].fullName;
+      for (var x of parkByActivities) {
+        var parkName = x.fullName;
 
-  //             for (var j = 0; j < activitiesObj.length; j ++) {
-  //                 if (activitiesObj[j].name == userInputActivities) {
-  //                 }
+        if (parkByTheme.includes(x)) {
+          console.log("yes");
 
-  //             }
+          var resultsDiv = $("<div>")
+            .addClass("results")
+            .appendTo("#parentResultsDiv")
+            .attr({
+              "data-lon": x.longitude,
+              "data-lat": x.latitude,
+              "data-park": x.parkCode,
+            });
+          $("<h4>").text(parkName).appendTo(resultsDiv);
+          var divOfPtags = $("<div>").addClass("container");
 
-  //             for (var j = 0; j < topicsObj.length; j ++) {
-  //                 if (topicsObj[j].name == userInputTheme) {
+          for (var j = 0; j < x.activities.length; j++) {
+            $("<p>").text(x.activities[j].name).appendTo(divOfPtags);
+          }
+          divOfPtags.appendTo(resultsDiv);
 
-  //                         var resultsDiv = $("<div>").addClass("pure-u-3-5 results").appendTo("#parentResultsDiv").attr({"data-lon": data.data[i].longitude, "data-lat": data.data[i].latitude, "data-park": data.data[i].parkCode});
-  //                         $("<h4>").text(parkName).appendTo(resultsDiv);
-  //                         for (var j = 0; j < activitiesObj.length; j ++) {
-  //                             $("<p>").text(activitiesObj[j].name).appendTo(resultsDiv);
-  //                         }
-  //                         var entranceFee = $("<p>");
-  //                         entranceFee.text(data.data[i].entranceFees[0].title + ": $" + parseFloat(data.data[i].entranceFees[0].cost).toFixed(2)).appendTo(resultsDiv);
-  //                     } else {
-
-  //                         // var parkName = data.data[i].fullName;
-  //                         var resultsDiv = $("<div>").addClass("pure-u-3-5 results").appendTo("#parentResultsDiv");
-  //                         $("<h1>").text("Your searching criteria doesn't match. Try again or choose any park below in " + userInputState).appendTo(resultsDiv);
-  //                         allParksInState();
-  //                         // $("<h4>").text(parkName).appendTo(resultsDiv);
-  //                         // for (var j = 0; j < topicsObj.length; j ++) {
-
-  //                         //     $("<p>").text(topicsObj[j].name).appendTo(resultsDiv);
-  //                         // }
-  //                         // var entranceFee = $("<p>");
-  //                         // entranceFee.text(data.data[i].entranceFees[0].title + ": $" + parseFloat(data.data[i].entranceFees[0].cost).toFixed(2)).appendTo(resultsDiv);
-
-  //                     }
-  //                 }
-  //             }
-  //          }
-
-  //     })
-
-  // }
+          var entranceFee = $("<p>");
+          entranceFee
+            .text(
+              x.entranceFees[0].title +
+                ": $" +
+                parseFloat(x.entranceFees[0].cost).toFixed(2)
+            )
+            .appendTo(resultsDiv);
+        } else {
+          $("<div>")
+            .text(
+              "Your search criteria did not match any Park in " + userInputState
+            )
+            .appendTo("#parentResultsDiv");
+        }
+      }
+      if (filteringActivities == false || filteringTheme == false) {
+        $("<h1>")
+          .text(
+            "Your search criteria did not match any Park in " + userInputState
+          )
+          .appendTo("#parentResultsDiv");
+      }
+    });
+  }
 
   if (stateCode !== null) {
     if (stateActivities == "null" && stateTheme == "null") {
@@ -363,7 +428,7 @@ $(document).ready(function () {
     }
     if (stateActivities != "null" && stateTheme != "null") {
       console.log("all things were selected");
-      // ajaxStateActivityThemeCall(stateCode, stateActivities, stateTheme);
+      ajaxStateActivityThemeCall(stateCode, stateActivities, stateTheme);
     }
     if (stateActivities == "null" && stateTheme != "null") {
       console.log("state " + stateCode + " and theme " + stateTheme);
@@ -374,18 +439,18 @@ $(document).ready(function () {
   // $("#parentResultsDiv").click(function(event){
 
   $("#parentResultsDiv").click(function (event) {
-    var longitude = event.target
-      .parentsUntil(resultsDiv)
-      .getAttribute("data-lon");
-    var latitude = event.target
-      .parentsUntil(resultsDiv)
-      .getAttribute("data-lat");
-    var parkCode = event.target
-      .parentsUntil(resultsDiv)
-      .getAttribute("data-park");
-    alert(
-      "Park null condition: " + longitude + " " + latitude + " " + parkCode
-    );
+    //event.currentTarget.
+
+    var longitude = event.target.getAttribute("data-lon");
+    var latitude = event.target.getAttribute("data-lat");
+    var parkCode = event.target.getAttribute("data-park");
+
+    if (parkCode == null && event.target.parentNode != null) {
+      var longitude = event.target.parentNode.getAttribute("data-lon");
+      var latitude = event.target.parentNode.getAttribute("data-lat");
+      var parkCode = event.target.parentNode.getAttribute("data-park");
+    }
+
     if (parkCode != null) {
       window.location.href =
         "./details.html" + // saving object into the window location href with parameters of user's choices
