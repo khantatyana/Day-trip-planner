@@ -281,5 +281,5 @@ $("#parentResultsDiv").click(function(event){
         parkCode; // saving object into the window location href of user's theme choice
       console.log(window.location);
     }
-  });
+  })
 })
