@@ -48,13 +48,15 @@ $(document).ready(function() {
                 $("<h4>").text(parkName).appendTo(resultsDiv);
                 var activitiesObj = data.data[i].activities;
                 
-                for (var j = 0; j < activitiesObj.length; j ++) {
+                for (var j = 0; j < activitiesObj.length; j++) {
                     $("<p>").text(activitiesObj[j].name).appendTo(resultsDiv);
                 }
                 
                 var entranceFee = $("<p>");
-                entranceFee.text(data.data[i].entranceFees[0].title + ": $" + parseFloat(data.data[i].entranceFees[0].cost).toFixed(2)).appendTo(resultsDiv);
- 
+                if (data.data[i].entranceFees[0]) {
+                    entranceFee.text(data.data[i].entranceFees[0].title + ": $" + parseFloat(data.data[i].entranceFees[0].cost).toFixed(2)).appendTo(resultsDiv);
+                }
+                
             }
         })
 
@@ -80,7 +82,9 @@ $(document).ready(function() {
                             $("<p>").text(activitiesObj[j].name).appendTo(resultsDiv);
                         }
                         var entranceFee = $("<p>");
-                        entranceFee.text(data.data[i].entranceFees[0].title + ": $" + parseFloat(data.data[i].entranceFees[0].cost).toFixed(2)).appendTo(resultsDiv);
+                        if (data.data[i].entranceFees[0]) {
+                            entranceFee.text(data.data[i].entranceFees[0].title + ": $" + parseFloat(data.data[i].entranceFees[0].cost).toFixed(2)).appendTo(resultsDiv);
+                        }    
                     } 
                 }
                 
@@ -108,7 +112,9 @@ $(document).ready(function() {
                             $("<p>").text(topicsObj[j].name).appendTo(resultsDiv);
                         }
                         var entranceFee = $("<p>");
-                        entranceFee.text(data.data[i].entranceFees[0].title + ": $" + parseFloat(data.data[i].entranceFees[0].cost).toFixed(2)).appendTo(resultsDiv);
+                        if (data.data[i].entranceFees[0]) {
+                            entranceFee.text(data.data[i].entranceFees[0].title + ": $" + parseFloat(data.data[i].entranceFees[0].cost).toFixed(2)).appendTo(resultsDiv);
+                        }    
                     }
                 }
                 
