@@ -1,36 +1,37 @@
 $(document).ready(function () {
-  
-    var urlParams = new URLSearchParams(window.location.search);     //constructing URl with saved parameters from the window location href
-    var longitude = urlParams.get("longitude");                     // getting stateName from the URL 
-    console.log(longitude);
-    var latitude = urlParams.get("latitude");              // getting the activities from the URL
-    console.log(latitude);
-    var parkCode = urlParams.get("parkCode");              // getting the activities from the URL
-    console.log(parkCode);  
-    
-    
-    getMap(latitude, longitude);
+  var urlParams = new URLSearchParams(window.location.search); //constructing URl with saved parameters from the window location href
+  var longitude = urlParams.get("longitude"); // getting stateName from the URL
+  console.log(longitude);
+  var latitude = urlParams.get("latitude"); // getting the activities from the URL
+  console.log(latitude);
+  var parkCode = urlParams.get("parkCode"); // getting the activities from the URL
+  console.log(parkCode);
 
-    function getMap(lat, lon){
-    
-        var mymap = L.map('mapid').setView([lat, lon], 13);
-        var marker = new L.marker([lat, lon]);
-            marker.addTo(mymap);
-        
-        // here we are creating a MapBox Streets tile layer. Involves
-        // creating attribution text and max zoom level
-        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoia2hhbnRhdHlhbmEiLCJhIjoiY2tianl6cGtyMHJ2ejJzdGRkamk4amV1byJ9.dvCAei1CaORvJiWXoaEn5g', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 10,
-            id: 'mapbox/streets-v11',
-            //this is 
-            tileSize: 512,
-            zoomOffset: -1,
-            // attributionControl: false,
-            accessToken: 'pk.eyJ1Ijoia2hhbnRhdHlhbmEiLCJhIjoiY2tianl6cGtyMHJ2ejJzdGRkamk4amV1byJ9.dvCAei1CaORvJiWXoaEn5g'
-        }).addTo(mymap);
-        
-        }
+  getMap(latitude, longitude);
+
+  function getMap(lat, lon) {
+    var mymap = L.map("mapid").setView([lat, lon], 13);
+    var marker = new L.marker([lat, lon]);
+    marker.addTo(mymap);
+
+    // here we are creating a MapBox Streets tile layer. Involves
+    // creating attribution text and max zoom level
+    L.tileLayer(
+      "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoia2hhbnRhdHlhbmEiLCJhIjoiY2tianl6cGtyMHJ2ejJzdGRkamk4amV1byJ9.dvCAei1CaORvJiWXoaEn5g",
+      {
+        attribution:
+          'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 10,
+        id: "mapbox/streets-v11",
+        //this is
+        tileSize: 512,
+        zoomOffset: -1,
+        // attributionControl: false,
+        accessToken:
+          "pk.eyJ1Ijoia2hhbnRhdHlhbmEiLCJhIjoiY2tianl6cGtyMHJ2ejJzdGRkamk4amV1byJ9.dvCAei1CaORvJiWXoaEn5g",
+      }
+    ).addTo(mymap);
+  }
 
   var queryURL = "";
   var resultsClass = $(".results");
@@ -254,5 +255,5 @@ $(document).ready(function () {
       bootstrapCardEl.append(cardImgEl).append(cardBodyEl);
       $("#weatherDashboard").append(bootstrapCardEl);
     });
-  };
+  });
 });
