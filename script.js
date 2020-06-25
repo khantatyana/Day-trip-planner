@@ -46,26 +46,25 @@ $(document).ready(function () {
   //var testingButton = $("<button>").text("Testing").appendTo(detailMain);
   //testingButton.click(function () {
 
-    displayDetails();
+  displayDetails();
 
-    function displayDetails() {
-  
-  detailMain.empty();
+  function displayDetails() {
+    detailMain.empty();
     detailSidebar.empty();
 
     var apiKey = "9bu5bi3vaKYgYQt7Cj4pxdYFN8pkwsL9zSIiRFEd";
 
-  /*  var queryURL =
+    /*  var queryURL =
       "https://developer.nps.gov/api/v1/parks?api_key=" +
       apiKey +
       "&stateCode=" +
       "NY";
   */
- var queryURLPark = "https://developer.nps.gov/api/v1/parks?api_key="  + 
- apiKey + 
- "&parkCode=" + 
- parkCode;
- 
+    var queryURLPark =
+      "https://developer.nps.gov/api/v1/parks?api_key=" +
+      apiKey +
+      "&parkCode=" +
+      parkCode;
 
     $.ajax({
       url: queryURLPark,
@@ -84,30 +83,30 @@ $(document).ready(function () {
         .text(park.description)
         .appendTo(detailMain);
 
-      var detailActivitiesArea = $(
-        "<div id='detailActivitiesArea'>"
-      ).appendTo(detailMain);
+      var detailActivitiesArea = $("<div id='detailActivitiesArea'>").appendTo(
+        detailMain
+      );
       var detailsActivitiesSubheading = $("<h4 class='detailCardSubheading'>")
         .text("Activities")
         .appendTo(detailActivitiesArea);
 
-        var divOfActivityPtags = $("<div>").addClass("detailsP");  
-      for (var j = 0; j < (park.activities).length; j++) {
+      var divOfActivityPtags = $("<div>").addClass("detailsP");
+      for (var j = 0; j < park.activities.length; j++) {
         var detailsActivitiesParagraph = $("<p>")
           .text(park.activities[j].name)
           .appendTo(divOfActivityPtags);
       }
       divOfActivityPtags.appendTo(detailActivitiesArea);
 
-      var detailTopicsArea = $(
-        "<div id='detailTopicsArea'>"
-      ).appendTo(detailMain);
+      var detailTopicsArea = $("<div id='detailTopicsArea'>").appendTo(
+        detailMain
+      );
       var detailsTopicsSubheading = $("<h4 class='detailCardSubheading'>")
         .text("Topics")
         .appendTo(detailTopicsArea);
 
-        var divOfThemePtags = $("<div>").addClass("detailsP");  
-      for (var k = 0; k < (park.topics).length; k++) {
+      var divOfThemePtags = $("<div>").addClass("detailsP");
+      for (var k = 0; k < park.topics.length; k++) {
         var detailsTopicsParagraph = $("<p>")
           .text(park.topics[k].name)
           .appendTo(divOfThemePtags);
@@ -163,11 +162,11 @@ $(document).ready(function () {
         .text("Email: " + park.contacts.emailAddresses[0].emailAddress)
         .appendTo(detailSidebar);
       var lineBreak2 = $("<br>").appendTo(detailSidebar);
-        
+
       var detailsWebsite = $("<a href='data.data[0].url)'>")
         .text("Website: " + data.data[0].url)
         .appendTo(detailSidebar);
-        var lineBreak3 = $("<br>").appendTo(detailSidebar);  
+      var lineBreak3 = $("<br>").appendTo(detailSidebar);
 
       var detailsFee = $("<p>").text(
         "Entrance Fee: " + park.operatingHours[0].standardHours
@@ -183,28 +182,20 @@ $(document).ready(function () {
         .text("Monday: " + park.operatingHours[0].standardHours.monday)
         .appendTo(detailSidebar);
       var detailsTuesday = $("<p>")
-        .text(
-          "Tuesday: " + park.operatingHours[0].standardHours.tuesday
-        )
+        .text("Tuesday: " + park.operatingHours[0].standardHours.tuesday)
         .appendTo(detailSidebar);
       var detailsWednesday = $("<p>")
-        .text(
-          "Wednesday: " + park.operatingHours[0].standardHours.wednesday
-        )
+        .text("Wednesday: " + park.operatingHours[0].standardHours.wednesday)
         .appendTo(detailSidebar);
       var detailsThursday = $("<p>")
-        .text(
-          "Thursday: " + park.operatingHours[0].standardHours.thursday
-        )
+        .text("Thursday: " + park.operatingHours[0].standardHours.thursday)
         .appendTo(detailSidebar);
       var detailsFriday = $("<p>")
         .text("Friday: " + park.operatingHours[0].standardHours.friday)
         .appendTo(detailSidebar);
 
       var detailsSaturday = $("<p>")
-        .text(
-          "Saturday: " + park.operatingHours[0].standardHours.saturday
-        )
+        .text("Saturday: " + park.operatingHours[0].standardHours.saturday)
         .appendTo(detailSidebar);
 
       for (var m = 1; m < park.images.length; m++) {
@@ -278,6 +269,6 @@ $(document).ready(function () {
       bootstrapCardEl.append(cardImgEl).append(cardBodyEl);
       $("#weatherDashboard").append(bootstrapCardEl);
     });
-//  });       //THE ENDING PARANTHESIS RELATED TO TESTING BUTTON
-}
+    //  });       //THE ENDING PARANTHESIS RELATED TO TESTING BUTTON
+  }
 });
