@@ -94,16 +94,25 @@ header Img {
   text-align: center;
 }
 
+.detailsP {
+  background-color: tomato;
+  display:flex;
+  justify-content: center;
+}
+
 #detailActivitiesArea,
 #detailTopicsArea,
 #detailAmenitiesArea {
   border: 1px solid #222b23;
-  width: 33%;
-  float: left;
+/*  width: 33%; */
+/*  float: left; */
+  display: flex;
+  flex-direction: row;
+  background-color: blue;
 }
 
 .detailCardSubheading {
-  background-color: #222b23;
+  background-color: #222b23; 
   color: white;
 }
 
