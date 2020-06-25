@@ -31,7 +31,7 @@ $(document).ready(function() {
     console.log(stateCode);
 
     function ajaxStatesCall(userInput) {  
-        alert("going into states function");                                          // if user picks only state option it'll be running only this AJAX api
+        
         
         $.ajax({
             
@@ -52,15 +52,19 @@ $(document).ready(function() {
 
                 var divOfPtags = $("<div>").addClass("container");
                 
-                for (var j = 0; j < activitiesObj.length; j ++) {
+
+                for (var j = 0; j < activitiesObj.length; j++) {
                     $("<p>").text(activitiesObj[j].name).appendTo(divOfPtags);
+
                 }
 
                 divOfPtags.appendTo(resultsDiv);
                 
                 var entranceFee = $("<p>");
-                entranceFee.text(data.data[i].entranceFees[0].title + ": $" + parseFloat(data.data[i].entranceFees[0].cost).toFixed(2)).appendTo(resultsDiv);
- 
+                if (data.data[i].entranceFees[0]) {
+                    entranceFee.text(data.data[i].entranceFees[0].title + ": $" + parseFloat(data.data[i].entranceFees[0].cost).toFixed(2)).appendTo(resultsDiv);
+                }
+                
             }
         })
 
@@ -90,7 +94,9 @@ $(document).ready(function() {
                         divOfPtags.appendTo(resultsDiv);
 
                         var entranceFee = $("<p>");
-                        entranceFee.text(data.data[i].entranceFees[0].title + ": $" + parseFloat(data.data[i].entranceFees[0].cost).toFixed(2)).appendTo(resultsDiv);
+                        if (data.data[i].entranceFees[0]) {
+                            entranceFee.text(data.data[i].entranceFees[0].title + ": $" + parseFloat(data.data[i].entranceFees[0].cost).toFixed(2)).appendTo(resultsDiv);
+                        }    
                     } 
                 }
                 
@@ -122,7 +128,9 @@ $(document).ready(function() {
                         divOfPtags.appendTo(resultsDiv);
                         
                         var entranceFee = $("<p>");
-                        entranceFee.text(data.data[i].entranceFees[0].title + ": $" + parseFloat(data.data[i].entranceFees[0].cost).toFixed(2)).appendTo(resultsDiv);
+                        if (data.data[i].entranceFees[0]) {
+                            entranceFee.text(data.data[i].entranceFees[0].title + ": $" + parseFloat(data.data[i].entranceFees[0].cost).toFixed(2)).appendTo(resultsDiv);
+                        }    
                     }
                 }
                 
@@ -231,14 +239,14 @@ $("#parentResultsDiv").click(function(event){
     var longitude = event.target.getAttribute("data-lon");
     var latitude = event.target.getAttribute("data-lat");
     var parkCode = event.target.getAttribute("data-park");
-    alert("no condition: " + longitude + " " + latitude + " " + parkCode);
+    
 
     if (parkCode == null && event.target.parentNode != null){
 
         var longitude = event.target.parentNode.getAttribute("data-lon");
         var latitude = event.target.parentNode.getAttribute("data-lat");
         var parkCode = event.target.parentNode.getAttribute("data-park");
-        alert("Park null condition: " + longitude + " " + latitude + " " + parkCode);
+        
 
     }
 
