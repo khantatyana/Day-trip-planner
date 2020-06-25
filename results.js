@@ -282,4 +282,4 @@ $("#parentResultsDiv").click(function(event){
       console.log(window.location);
     }
   });
-}
+})
