@@ -30,7 +30,8 @@ $(document).ready(function() {
     var stateCode = statesObject[stateName];
     console.log(stateCode);
 
-    function ajaxStatesCall(userInput) {                                            // if user picks only state option it'll be running only this AJAX api
+    function ajaxStatesCall(userInput) {  
+        alert("going into states function");                                          // if user picks only state option it'll be running only this AJAX api
         
         $.ajax({
             
@@ -41,17 +42,20 @@ $(document).ready(function() {
             console.log(data.data.length);
             var totalParks = $("<h3>").prependTo("#resultsIntro");
             totalParks.text("We found " + data.data.length + " National Parks in " + stateName).appendTo(totalParks);
+            
             for (var i = 0; i < data.data.length; i++) {
                 
                 var parkName = data.data[i].fullName;
                 var resultsDiv = $("<div>").addClass("results").appendTo("#parentResultsDiv").attr({"data-lon": data.data[i].longitude, "data-lat": data.data[i].latitude, "data-park": data.data[i].parkCode});
                 $("<h4>").text(parkName).appendTo(resultsDiv);
                 var activitiesObj = data.data[i].activities;
+
                 var divOfPtags = $("<div>").addClass("container");
                 
                 for (var j = 0; j < activitiesObj.length; j ++) {
                     $("<p>").text(activitiesObj[j].name).appendTo(divOfPtags);
                 }
+
                 divOfPtags.appendTo(resultsDiv);
                 
                 var entranceFee = $("<p>");
@@ -219,20 +223,34 @@ $(document).ready(function() {
 
 
 
-    // $("#parentResultsDiv").click(function(event){
-        
-    $("#parentResultsDiv").click(function(event){
-        //event.currentTarget
+// $("#parentResultsDiv").click(function(event){
+    
+$("#parentResultsDiv").click(function(event){
+    //event.currentTarget.
 
-        var longitude = event.target.getAttribute("data-lon");
-        var latitude = event.target.getAttribute("data-lat");
-        var parkCode = event.target.getAttribute("data-park");
+    var longitude = event.target.getAttribute("data-lon");
+    var latitude = event.target.getAttribute("data-lat");
+    var parkCode = event.target.getAttribute("data-park");
+    alert("no condition: " + longitude + " " + latitude + " " + parkCode);
 
-        window.location.href = "./details.html" +             // saving object into the window location href with parameters of user's choices
-        "?longitude=" + longitude +         // saving object into the window location href of user's stateName choice
-        "&latitude=" + latitude +       // saving object into the window location href of user's activity choice
-        "&parkCode=" + parkCode            // saving object into the window location href of user's theme choice
-    console.log(window.location);
+    if (parkCode == null && event.target.parentNode != null){
+
+        var longitude = event.target.parentNode.getAttribute("data-lon");
+        var latitude = event.target.parentNode.getAttribute("data-lat");
+        var parkCode = event.target.parentNode.getAttribute("data-park");
+        alert("Park null condition: " + longitude + " " + latitude + " " + parkCode);
+
+    }
+
+    if (parkCode != null) {
+
+    window.location.href = "./details.html" +             // saving object into the window location href with parameters of user's choices
+    "?longitude=" + longitude +         // saving object into the window location href of user's stateName choice
+    "&latitude=" + latitude +       // saving object into the window location href of user's activity choice
+    "&parkCode=" + parkCode            // saving object into the window location href of user's theme choice
+console.log(window.location);
+    }
+
 
     })
 
