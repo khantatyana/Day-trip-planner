@@ -254,5 +254,5 @@ $(document).ready(function () {
       bootstrapCardEl.append(cardImgEl).append(cardBodyEl);
       $("#weatherDashboard").append(bootstrapCardEl);
     });
-  });
+  };
 });
