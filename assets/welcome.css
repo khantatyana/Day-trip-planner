@@ -9,6 +9,7 @@
   flex-direction: column;
   height: 75vh;
   width: 100vw;
+  line-height: 2.2rem;
 }
 
 #welcomeLogo {

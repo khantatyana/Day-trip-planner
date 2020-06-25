@@ -2,9 +2,9 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
-/* .bodyContainer {
-  height: 103vh;
-} */
+.bodyContainer {
+  height: 100vh;
+}
 
 header {
   background-color: #222b23;
@@ -34,7 +34,14 @@ header Img {
 }
 
 .dropbtn {
-  background-color: tomato;
+  background-color: #3c4f40;
+  border-radius: 10px;
+  border-style: none;
+  padding: 1px 10px 1px 10px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.6);
+  color: #222b23;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
 .dropdown-content {
@@ -44,6 +51,7 @@ header Img {
   /* min-width: 160px; */
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  padding: 1px 10px 1px 10px;
   border-radius: 3px;
 }
 
@@ -55,8 +63,8 @@ header Img {
 }
 
 .dropdown-content a:hover {
-  background-color: #a0b5a4;
-  border-radius: 3px;
+  color: #a0b5a4;
+  font-weight: bolder;
 }
 
 .dropdown:hover .dropdown-content {
@@ -160,7 +168,8 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  position: absolute;
+  bottom: 0px;
   width: 100%;
   margin-top: 2rem;
 }

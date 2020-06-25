@@ -31,7 +31,14 @@ header Img {
 }
 
 .dropbtn {
-  background-color: tomato;
+  background-color: #3c4f40;
+  border-radius: 10px;
+  border-style: none;
+  padding: 1px 10px 1px 10px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.6);
+  color: #222b23;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
 .dropdown-content {
@@ -41,6 +48,7 @@ header Img {
   /* min-width: 160px; */
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  padding: 1px 10px 1px 10px;
   border-radius: 3px;
 }
 
@@ -52,8 +60,8 @@ header Img {
 }
 
 .dropdown-content a:hover {
-  background-color: #a0b5a4;
-  border-radius: 3px;
+  color: #a0b5a4;
+  font-weight: bolder;
 }
 
 .dropdown:hover .dropdown-content {
@@ -188,18 +196,41 @@ header Img {
 
 .grid-container {
   display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 2rem;
+  grid-template-columns: 60% 40%;
+  grid-gap: 1.5rem;
   background-color: #222b23;
   padding: 3rem;
   margin: 2rem 0rem 3rem 0rem;
 }
-
+/* weather container */
 .grid-container > div {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: white;
   text-align: center;
-  padding: 20px 0;
-  font-size: 30px;
+  font-size: 18px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0rem 0.3rem 0.3rem 0 rgba(0, 0, 0);
+}
+
+#weatherDashboard h1 {
+  color: #222b23;
+  text-align: center;
+  font-weight: bold;
+}
+.bg-info {
+  background-color: #222b23;
+  border-radius: 3px;
+  margin-bottom: 1rem;
+  color: white;
+  line-height: 2rem;
+  box-shadow: 0.3rem 0.3rem 0.3rem 0 rgba(0, 0, 0);
+}
+
+.card-text {
+  margin-bottom: 2rem;
+  /* color: white; */
 }
 /* ////////// End of maps //////// */
 
