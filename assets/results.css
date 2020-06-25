@@ -114,8 +114,9 @@ header Img {
 
 #parentResultsDiv {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 #parentResultsDiv h4 {
@@ -133,7 +134,7 @@ header Img {
   border-radius: 5px;
   box-shadow: 0rem 0.2rem 0.2rem 0 rgba(0, 0, 0);
   border: 2px outset rgba(111, 119, 113, 0.938);
-  max-width: 60%;
+  width: 60%;
   display: flex;
   justify-content: center;
   flex-direction: column;
