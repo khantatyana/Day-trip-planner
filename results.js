@@ -64,10 +64,9 @@ $(document).ready(function() {
                 if (data.data[i].entranceFees[0]) {
                     entranceFee.text(data.data[i].entranceFees[0].title + ": $" + parseFloat(data.data[i].entranceFees[0].cost).toFixed(2)).appendTo(resultsDiv);
                 }
+              }
                 
-            }
-            divOfPtags.appendTo(resultsDiv);
-        });
+        })
     }
     function ajaxStateActivityCall(userInputState, userInputActivities) {          // if user picks state and activity, it'll be filtering in the given state by matching activity
         $.ajax({
