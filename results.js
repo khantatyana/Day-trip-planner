@@ -68,7 +68,7 @@ $(document).ready(function() {
             }
             divOfPtags.appendTo(resultsDiv);
 
-    }
+    })
     function ajaxStateActivityCall(userInputState, userInputActivities) {          // if user picks state and activity, it'll be filtering in the given state by matching activity
         $.ajax({
             
