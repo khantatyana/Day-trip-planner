@@ -6,6 +6,9 @@ $(document).ready(function () {
   console.log(latitude);
   var parkCode = urlParams.get("parkCode"); // getting the activities from the URL
   console.log(parkCode);
+  var cityName = urlParams.get("city");
+  console.log(cityName);
+  
 
   getMap(latitude, longitude);
 
@@ -217,8 +220,9 @@ $(document).ready(function () {
 
     // Get API key.
     var weatherURL =
-      "https://api.openweathermap.org/data/2.5/forecast?appid=571d9f58c398657c20313ac4142d50fd&us&mode&units=imperial&q=new+york";
-    // Testing for api New York, next should be + city park "https://api.openweathermap.org/data/2.5/forecast?appid=571d9f58c398657c20313ac4142d50fd&us&mode&units=imperial&q=new&york"
+    //get weather by latitude and longitude
+    "https://api.openweathermap.org/data/2.5/weather?appid=571d9f58c398657c20313ac4142d50fd&us&mode&units=imperial&lat=" + latitude + "&lon=" + longitude;
+
     $.ajax({
       url: weatherURL,
       method: "GET",
@@ -229,48 +233,48 @@ $(document).ready(function () {
       );
       var cardImgEl = $(
         '<img src="http://openweathermap.org/img/wn/' +
-          data.list[0].weather[0].icon +
+        data.weather[0].icon +
           '@2x.png" class="card-img-top" alt="..."></img>'
       );
       var cardBodyEl = $(
         '<div class="card-body">' +
           "<h5>" +
-          data.city.name +
+          data.name +
           " , " +
-          data.city.country +
+          data.sys.country +
           "</h5>" +
           "</div>"
       );
       var h5El = $(
         '<h5 class="card-title">' +
-          data.list[0].weather[0].main +
+          data.weather[0].main +
           " -- " +
-          data.list[0].weather[0].description +
+          data.weather[0].description +
           "</h5>"
       );
       var bodytemp = $(
         '<p class="card-text">' +
           "Temp: " +
-          data.list[0].main.temp +
+          data.main.temp +
           "º" +
           "<br>" +
           "Feels Like: " +
-          data.list[0].main.feels_like +
+          data.main.feels_like +
           "º" +
           "<br>" +
           "Min. " +
-          data.list[0].main.temp_min +
+          data.main.temp_min +
           "º" +
           " | Max. " +
-          data.list[0].main.temp_max +
+          data.main.temp_max +
           "º" +
           "<br>" +
           "Humidity: " +
-          data.list[0].main.humidity +
+          data.main.humidity +
           "%" +
           "<br>" +
           "Wind Speed: " +
-          data.list[0].wind.speed +
+          data.wind.speed +
           " mph" +
           "</p>"
       );
