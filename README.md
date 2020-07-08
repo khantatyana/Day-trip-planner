@@ -1,7 +1,7 @@
 
 
 
-![tes](/assets/screen_shot.png)
+![tes](/assets/Picture.png)
 
 
 [GitHub page](https://khantatyana.github.io/Project-1/)
