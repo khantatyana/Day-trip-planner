@@ -12,7 +12,7 @@ Application was built with third-party APIs: National Parks, Map Box API and Ope
 ![tes](/assets/Picture1.png)
 
 
-[App Web page](https://khantatyana.github.io/Project-1/)
+[App Web page](https://khantatyana.github.io/Day-trip-planner/)
 
 
 [Project details](https://github.com/users/khantatyana/projects/1)
